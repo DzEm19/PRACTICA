@@ -1,9 +1,10 @@
 import { AppLayout } from '../layouts/AppLayout';
 import { metricSnapshots } from '../services/api';
+import type { ViewKey } from '../types';
 
 interface PageProps {
-  activeView?: string;
-  onSelectView?: (view: string) => void;
+  activeView?: ViewKey;
+  onSelectView?: (view: ViewKey) => void;
 }
 
 export default function MetricasPage({ activeView = 'metricas', onSelectView = () => undefined }: PageProps) {

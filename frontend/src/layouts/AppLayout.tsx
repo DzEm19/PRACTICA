@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
 import { menuItems } from '../services/api';
+import type { ViewKey } from '../types';
 
 interface AppLayoutProps {
-  activeView: string;
-  onSelectView: (view: string) => void;
+  activeView: ViewKey;
+  onSelectView: (view: ViewKey) => void;
   children: ReactNode;
 }
 
@@ -25,9 +26,10 @@ export function AppLayout({ activeView, onSelectView, children }: AppLayoutProps
               key={item.key}
               type="button"
               className={`menu-item ${activeView === item.key ? 'active' : ''}`}
+              data-accent={item.accent}
               onClick={() => onSelectView(item.key)}
             >
-              <span className="menu-icon">{item.icon}</span>
+              <span className="menu-icon" style={{ color: item.accent }}>{item.icon}</span>
               {item.label}
             </button>
           ))}

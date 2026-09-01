@@ -6,20 +6,22 @@ import type {
   KpiCard,
   MetricBar,
   MetricSnapshot,
+  NlpInsight,
   OptimizationScenario,
   ReportRow,
+  ReportTool,
   ViewKey,
   WordCloudItem,
 } from '../types';
 
-export const menuItems: Array<{ key: ViewKey; label: string; icon: string }> = [
-  { key: 'dashboard', label: 'Dashboard', icon: '▣' },
-  { key: 'clientes', label: 'Clientes', icon: '◍' },
-  { key: 'comentarios', label: 'Comentarios', icon: '☰' },
-  { key: 'analisisNLP', label: 'Análisis NLP', icon: '✦' },
-  { key: 'metricas', label: 'Métricas', icon: '◔' },
-  { key: 'optimizacion', label: 'Optimización', icon: '⬢' },
-  { key: 'reportes', label: 'Reportes', icon: '▤' },
+export const menuItems: Array<{ key: ViewKey; label: string; icon: string; accent: string }> = [
+  { key: 'dashboard', label: 'Dashboard', icon: '▣', accent: '#92e0b3' },
+  { key: 'clientes', label: 'Clientes', icon: '◍', accent: '#a9d4ff' },
+  { key: 'comentarios', label: 'Atención', icon: '☰', accent: '#ffd899' },
+  { key: 'analisisNLP', label: 'Inteligencia NLP', icon: '✦', accent: '#b7d4ff' },
+  { key: 'metricas', label: 'Scientific Data', icon: '◔', accent: '#9edfc7' },
+  { key: 'reportes', label: 'Reportes', icon: '▤', accent: '#ffb9b9' },
+  { key: 'configuracion', label: 'Configuración', icon: '⚙', accent: '#f7c3a5' },
 ];
 
 export const kpiCards: KpiCard[] = [
@@ -64,17 +66,23 @@ export const activityFeed: ActivityItem[] = [
 ];
 
 export const clientes: ClientRecord[] = [
-  { id: 1, name: 'Ana Gómez', company: 'Apex Soluciones', email: 'ana@apex.com', status: 'Activo', satisfaction: 96 },
-  { id: 2, name: 'Mateo Ruiz', company: 'LogisCenter', email: 'mateo@logiscenter.com', status: 'Atención', satisfaction: 88 },
-  { id: 3, name: 'Sofía Torres', company: 'Nexa Retail', email: 'sofia@nexa.com', status: 'Pendiente', satisfaction: 82 },
-  { id: 4, name: 'Diego Pérez', company: 'BlueWave', email: 'diego@bluewave.com', status: 'Activo', satisfaction: 91 },
+  { id: 1, name: 'Ana Gómez', company: 'Apex Soluciones', email: 'ana@apex.com', status: 'Activo', satisfaction: 96, segment: 'Enterprise', owner: 'María López', lastInteraction: 'Hace 2h', risk: 'Bajo', isNew: true, tenure: '18 meses' },
+  { id: 2, name: 'Mateo Ruiz', company: 'LogisCenter', email: 'mateo@logiscenter.com', status: 'Atención', satisfaction: 88, segment: 'Mid-market', owner: 'Carlos Díaz', lastInteraction: 'Hace 5h', risk: 'Medio', tenure: '11 meses' },
+  { id: 3, name: 'Sofía Torres', company: 'Nexa Retail', email: 'sofia@nexa.com', status: 'Pendiente', satisfaction: 82, segment: 'Retail', owner: 'Lucía García', lastInteraction: 'Ayer', risk: 'Alto', isNew: true, tenure: '6 meses' },
+  { id: 4, name: 'Diego Pérez', company: 'BlueWave', email: 'diego@bluewave.com', status: 'Activo', satisfaction: 91, segment: 'Technology', owner: 'Elena Ruiz', lastInteraction: 'Hace 4h', risk: 'Bajo', tenure: '32 meses' },
+  { id: 5, name: 'Carmen Ríos', company: 'MediClinic', email: 'carmen@mediclinic.com', status: 'Activo', satisfaction: 94, segment: 'Health', owner: 'Javier Torres', lastInteraction: 'Hace 1h', risk: 'Bajo', isNew: true, tenure: '9 meses' },
+  { id: 6, name: 'Iker Navarro', company: 'Northline', email: 'iker@northline.com', status: 'Atención', satisfaction: 79, segment: 'Logistics', owner: 'Paula Ray', lastInteraction: 'Hace 6h', risk: 'Medio', tenure: '22 meses' },
+  { id: 7, name: 'Rosa Delgado', company: 'Arbor House', email: 'rosa@arborhouse.com', status: 'Pendiente', satisfaction: 74, segment: 'Real estate', owner: 'Pedro Costa', lastInteraction: 'Hace 1d', risk: 'Alto', tenure: '14 meses' },
+  { id: 8, name: 'Tomás Vega', company: 'Zenith Labs', email: 'tomas@zenithlabs.com', status: 'Activo', satisfaction: 92, segment: 'R&D', owner: 'Alina Vega', lastInteraction: 'Hace 3h', risk: 'Bajo', isNew: true, tenure: '7 meses' },
 ];
 
 export const comentarios: CommentRecord[] = [
-  { id: 1, client: 'Ana Gómez', sentiment: 'Positivo', category: 'Felicitación', text: 'El servicio fue rápido, amable y muy claro en cada paso.', responseTime: '12 min' },
-  { id: 2, client: 'Mateo Ruiz', sentiment: 'Neutral', category: 'Consulta', text: 'Necesito una actualización del proceso de soporte para mi equipo.', responseTime: '21 min' },
-  { id: 3, client: 'Sofía Torres', sentiment: 'Negativo', category: 'Reclamo', text: 'El pedido llegó con retraso y la atención fue lenta.', responseTime: '34 min' },
-  { id: 4, client: 'Diego Pérez', sentiment: 'Positivo', category: 'Ventas', text: 'Muy buena atención comercial y opciones claras de compra.', responseTime: '15 min' },
+  { id: 1, client: 'Ana Gómez', sentiment: 'Positivo', category: 'Felicitación', text: 'El servicio fue rápido, amable y muy claro en cada paso.', responseTime: '12 min', rating: 5, source: 'Email', priority: 'Baja' },
+  { id: 2, client: 'Mateo Ruiz', sentiment: 'Neutral', category: 'Consulta', text: 'Necesito una actualización del proceso de soporte para mi equipo.', responseTime: '21 min', rating: 3, source: 'Chat', priority: 'Media' },
+  { id: 3, client: 'Sofía Torres', sentiment: 'Negativo', category: 'Reclamo', text: 'El pedido llegó con retraso y la atención fue lenta.', responseTime: '34 min', rating: 2, source: 'WhatsApp', priority: 'Alta' },
+  { id: 4, client: 'Diego Pérez', sentiment: 'Positivo', category: 'Ventas', text: 'Muy buena atención comercial y opciones claras de compra.', responseTime: '15 min', rating: 5, source: 'Call', priority: 'Baja' },
+  { id: 5, client: 'Carmen Ríos', sentiment: 'Positivo', category: 'Soporte', text: 'El equipo solucionó mi incidencia en menos de 10 minutos.', responseTime: '10 min', rating: 5, source: 'Portal', priority: 'Media' },
+  { id: 6, client: 'Iker Navarro', sentiment: 'Negativo', category: 'Reclamo', text: 'Necesitamos un seguimiento más cercano del caso.', responseTime: '28 min', rating: 2, source: 'Email', priority: 'Alta' },
 ];
 
 export const metricSnapshots: MetricSnapshot[] = [
@@ -95,4 +103,19 @@ export const reportRows: ReportRow[] = [
   { name: 'NLP precisión', value: '92.1%', change: '+2.2%' },
   { name: 'Satisfacción', value: '89.6%', change: '+6.1%' },
   { name: 'Retención', value: '78.3%', change: '+3.8%' },
+];
+
+export const nlpInsights: NlpInsight[] = [
+  { label: 'Servicio', volume: 94, sentiment: 'Positivo', trend: '+12%', confidence: 92 },
+  { label: 'Atención', volume: 88, sentiment: 'Positivo', trend: '+9%', confidence: 89 },
+  { label: 'Respuesta', volume: 76, sentiment: 'Neutral', trend: '+6%', confidence: 84 },
+  { label: 'Soporte', volume: 68, sentiment: 'Positivo', trend: '+7%', confidence: 87 },
+  { label: 'Reclamo', volume: 54, sentiment: 'Negativo', trend: '-4%', confidence: 81 },
+  { label: 'Calidad', volume: 61, sentiment: 'Positivo', trend: '+10%', confidence: 90 },
+];
+
+export const reportTools: ReportTool[] = [
+  { title: 'Exportación', description: 'CSV, PDF y análisis por periodo.', tone: 'green' },
+  { title: 'Comparativa', description: 'Benchmark del último trimestre.', tone: 'blue' },
+  { title: 'Alertas', description: 'Índices de riesgo y casos críticos.', tone: 'amber' },
 ];

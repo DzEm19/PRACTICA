@@ -3,7 +3,7 @@ import type { ViewKey } from './types';
 
 interface AppRouteProps {
   view: ViewKey;
-  onSelectView: (view: string) => void;
+  onSelectView: (view: ViewKey) => void;
 }
 
 export function AppRoute({ view, onSelectView }: AppRouteProps) {

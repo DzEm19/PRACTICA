@@ -5,7 +5,8 @@ export type ViewKey =
   | 'analisisNLP'
   | 'metricas'
   | 'optimizacion'
-  | 'reportes';
+  | 'reportes'
+  | 'configuracion';
 
 export interface KpiCard {
   label: string;
@@ -47,6 +48,12 @@ export interface ClientRecord {
   email: string;
   status: 'Activo' | 'Pendiente' | 'Atención';
   satisfaction: number;
+  segment: string;
+  owner: string;
+  lastInteraction: string;
+  risk: 'Bajo' | 'Medio' | 'Alto';
+  isNew?: boolean;
+  tenure: string;
 }
 
 export interface CommentRecord {
@@ -56,6 +63,9 @@ export interface CommentRecord {
   category: 'Soporte' | 'Ventas' | 'Reclamo' | 'Consulta' | 'Felicitación';
   text: string;
   responseTime: string;
+  rating: number;
+  source: string;
+  priority: 'Alta' | 'Media' | 'Baja';
 }
 
 export interface MetricSnapshot {
@@ -76,4 +86,18 @@ export interface ReportRow {
   name: string;
   value: string;
   change: string;
+}
+
+export interface NlpInsight {
+  label: string;
+  volume: number;
+  sentiment: 'Positivo' | 'Neutral' | 'Negativo';
+  trend: string;
+  confidence: number;
+}
+
+export interface ReportTool {
+  title: string;
+  description: string;
+  tone: 'green' | 'blue' | 'amber';
 }

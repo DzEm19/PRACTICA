@@ -6,8 +6,9 @@ import AnalisisNLPPage from '../pages/AnalisisNPL';
 import MetricasPage from '../pages/Metricas';
 import OptimizacionPage from '../pages/Oprimización';
 import ReportesPage from '../pages/Reportes';
+import ConfiguracionPage from '../pages/Configuracion';
 
-export const renderPage = (view: ViewKey, onSelectView: (view: string) => void) => {
+export const renderPage = (view: ViewKey, onSelectView: (view: ViewKey) => void) => {
   const props = { activeView: view, onSelectView };
 
   switch (view) {
@@ -25,6 +26,8 @@ export const renderPage = (view: ViewKey, onSelectView: (view: string) => void) 
       return <OptimizacionPage {...props} />;
     case 'reportes':
       return <ReportesPage {...props} />;
+    case 'configuracion':
+      return <ConfiguracionPage {...props} />;
     default:
       return <DashboardPage {...props} />;
   }
