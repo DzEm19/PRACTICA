@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/pages/AnalisisNPL.tsx","./src/pages/Clientes.tsx","./src/pages/Comentarios.tsx","./src/pages/Dashboard.tsx","./src/pages/Metricas.tsx","./src/pages/Oprimización.tsx","./src/pages/Reportes.tsx","./src/services/api.ts","./src/services/comentarios.ts","./src/services/nltk.ts","./src/services/scipy.ts"],"version":"5.9.3"}
