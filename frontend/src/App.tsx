@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AppRoute } from './AppRoute';
+import { AppRoute } from './routes/AppRoute';
 import type { ViewKey } from './types';
 
 export default function App() {
