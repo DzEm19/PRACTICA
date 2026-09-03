@@ -17,7 +17,7 @@ import type {
 export const menuItems: Array<{ key: ViewKey; label: string; icon: string; accent: string }> = [
   { key: 'dashboard', label: 'Dashboard', icon: '▣', accent: '#92e0b3' },
   { key: 'clientes', label: 'Clientes', icon: '◍', accent: '#a9d4ff' },
-  { key: 'comentarios', label: 'Atención', icon: '☰', accent: '#ffd899' },
+  { key: 'comentarios', label: 'Comentarios', icon: '☰', accent: '#ffd899' },
   { key: 'analisisNLP', label: 'Inteligencia NLP', icon: '✦', accent: '#b7d4ff' },
   { key: 'metricas', label: 'Scientific Data', icon: '◔', accent: '#9edfc7' },
   { key: 'reportes', label: 'Reportes', icon: '▤', accent: '#ffb9b9' },
@@ -77,12 +77,12 @@ export const clientes: ClientRecord[] = [
 ];
 
 export const comentarios: CommentRecord[] = [
-  { id: 1, client: 'Ana Gómez', sentiment: 'Positivo', category: 'Felicitación', text: 'El servicio fue rápido, amable y muy claro en cada paso.', responseTime: '12 min', rating: 5, source: 'Email', priority: 'Baja' },
-  { id: 2, client: 'Mateo Ruiz', sentiment: 'Neutral', category: 'Consulta', text: 'Necesito una actualización del proceso de soporte para mi equipo.', responseTime: '21 min', rating: 3, source: 'Chat', priority: 'Media' },
-  { id: 3, client: 'Sofía Torres', sentiment: 'Negativo', category: 'Reclamo', text: 'El pedido llegó con retraso y la atención fue lenta.', responseTime: '34 min', rating: 2, source: 'WhatsApp', priority: 'Alta' },
-  { id: 4, client: 'Diego Pérez', sentiment: 'Positivo', category: 'Ventas', text: 'Muy buena atención comercial y opciones claras de compra.', responseTime: '15 min', rating: 5, source: 'Call', priority: 'Baja' },
-  { id: 5, client: 'Carmen Ríos', sentiment: 'Positivo', category: 'Soporte', text: 'El equipo solucionó mi incidencia en menos de 10 minutos.', responseTime: '10 min', rating: 5, source: 'Portal', priority: 'Media' },
-  { id: 6, client: 'Iker Navarro', sentiment: 'Negativo', category: 'Reclamo', text: 'Necesitamos un seguimiento más cercano del caso.', responseTime: '28 min', rating: 2, source: 'Email', priority: 'Alta' },
+  { id: 1, clientId: 1, client: 'Ana Gómez', content: 'El servicio fue rápido, amable y muy claro en cada paso.', channel: 'email', status: 'resuelto', category: 'Felicitación', date: '', processed: true, sentiment: 'Positivo', text: 'El servicio fue rápido, amable y muy claro en cada paso.', responseTime: '12 min', rating: 5, source: 'Email', priority: 'Baja' },
+  { id: 2, clientId: 2, client: 'Mateo Ruiz', content: 'Necesito una actualización del proceso de soporte para mi equipo.', channel: 'chat', status: 'pendiente', category: 'Consulta', date: '', processed: false, sentiment: 'Neutral', text: 'Necesito una actualización del proceso de soporte para mi equipo.', responseTime: '21 min', rating: 3, source: 'Chat', priority: 'Media' },
+  { id: 3, clientId: 3, client: 'Sofía Torres', content: 'El pedido llegó con retraso y la atención fue lenta.', channel: 'whatsapp', status: 'en_revision', category: 'Reclamo', date: '', processed: true, sentiment: 'Negativo', text: 'El pedido llegó con retraso y la atención fue lenta.', responseTime: '34 min', rating: 2, source: 'WhatsApp', priority: 'Alta' },
+  { id: 4, clientId: 4, client: 'Diego Pérez', content: 'Muy buena atención comercial y opciones claras de compra.', channel: 'call', status: 'resuelto', category: 'Ventas', date: '', processed: true, sentiment: 'Positivo', text: 'Muy buena atención comercial y opciones claras de compra.', responseTime: '15 min', rating: 5, source: 'Call', priority: 'Baja' },
+  { id: 5, clientId: 5, client: 'Carmen Ríos', content: 'El equipo solucionó mi incidencia en menos de 10 minutos.', channel: 'portal', status: 'resuelto', category: 'Soporte', date: '', processed: true, sentiment: 'Positivo', text: 'El equipo solucionó mi incidencia en menos de 10 minutos.', responseTime: '10 min', rating: 5, source: 'Portal', priority: 'Media' },
+  { id: 6, clientId: 6, client: 'Iker Navarro', content: 'Necesitamos un seguimiento más cercano del caso.', channel: 'email', status: 'pendiente', category: 'Reclamo', date: '', processed: false, sentiment: 'Negativo', text: 'Necesitamos un seguimiento más cercano del caso.', responseTime: '28 min', rating: 2, source: 'Email', priority: 'Alta' },
 ];
 
 export const metricSnapshots: MetricSnapshot[] = [

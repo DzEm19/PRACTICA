@@ -1,12 +1,22 @@
-import psycopg2
-from dotenv import load_dotenv
-import os
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-# Load environment variables from .env
-load_dotenv()
+from app.api.comentarios import router as comentarios_router
+from app.api.tiempos import router as tiempos_router
 
-# Fetch variables
-DATABASE_URL = os.getenv("DATABASE_URL")
+app = FastAPI(title="Centro Inteligente API")
+app.add_middleware(
+	CORSMiddleware,
+	allow_origins=["http://localhost:5173"],
+	allow_credentials=True,
+	allow_methods=["*"],
+	allow_headers=["*"],
+)
 
-# Connect to the database
-connection = psycopg2.connect(DATABASE_URL)
+app.include_router(comentarios_router, prefix="/api")
+app.include_router(tiempos_router, prefix="/api")
+
+
+@app.get("/health")
+def health() -> dict[str, str]:
+	return {"status": "ok"}

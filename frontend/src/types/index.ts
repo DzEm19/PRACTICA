@@ -58,14 +58,29 @@ export interface ClientRecord {
 
 export interface CommentRecord {
   id: number;
+  clientId: number | null;
   client: string;
-  sentiment: 'Positivo' | 'Neutral' | 'Negativo';
+  content: string;
+  channel: string;
+  status: string;
   category: 'Soporte' | 'Ventas' | 'Reclamo' | 'Consulta' | 'Felicitación';
+  date: string;
+  processed: boolean;
+  sentiment: 'Positivo' | 'Neutral' | 'Negativo';
   text: string;
   responseTime: string;
   rating: number;
   source: string;
   priority: 'Alta' | 'Media' | 'Baja';
+}
+
+export interface AttentionTimeRecord {
+  id: number;
+  commentId: number;
+  content: string;
+  minutes: number;
+  date: string;
+  notes: string | null;
 }
 
 export interface MetricSnapshot {
